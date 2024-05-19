@@ -20,7 +20,7 @@ left, top, right,bottom = GetWindowRect(desktop)
 def redraw():
     RedrawWindow(0, None, None, win32con.RDW_ERASE | win32con.RDW_INVALIDATE | win32con.RDW_ALLCHILDREN) #type: ignore
 
-for i in range(100):
+for i in range(300):
     hdc = GetDC(0)
     memdc = CreateCompatibleDC(hdc)
     hbit = CreateCompatibleBitmap(hdc, x, y)

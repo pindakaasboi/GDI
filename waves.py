@@ -16,7 +16,7 @@ def sines():
         for i in range(int(sw + sh)):
             a = int(math.sin(angle) * 20)
             win32gui.BitBlt(hdc, 0, i, sw, 1, hdc, a, i, win32con.SRCCOPY)
-            angle += math.pi / 40
+            angle += math.pi / 90
         win32gui.ReleaseDC(desktop, hdc)
         time.sleep(0.01)
 
