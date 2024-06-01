@@ -11,5 +11,5 @@ hdc = win32gui.GetDC(0)
 
 while True:
     
-    win32gui.BitBlt(hdc, 0, 0, sw, sh, hdc, -3,-3, win32con.NOTSRCCOPY)
+    win32gui.BitBlt(hdc, 0, 0, sw, sh, hdc, -7,-3, win32con.NOTSRCCOPY)
 

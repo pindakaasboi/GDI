@@ -34,7 +34,7 @@ while True:
             signX, signY = 1, 1
             incrementor = 9
             w, h, hdc = GetSystemMetrics(0), GetSystemMetrics(1), GetDC(0)
-            text = "PyDupe Fucked Your pc"
+            text = "your text here"
             color = random.randint(0, 255) | (random.randint(0, 255) << 8) | (random.randint(0, 255) << 16)
             SetTextColor(hdc, color)
             SetBkMode(hdc, 0)

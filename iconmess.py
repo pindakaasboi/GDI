@@ -2,31 +2,35 @@ import win32gui
 import win32con
 import ctypes
 import random
+import time
+from win32api import GetSystemMetrics
 
-hdc = win32gui.GetDC(0)
+# Initialize and set DPI awareness
 user32 = ctypes.windll.user32
 user32.SetProcessDPIAware()
-[w, h] = [user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)]
 
+# Get device context for the entire screen
+hdc = win32gui.GetDC(0)
 
-x = y = 0
+# Get screen width and height
+screen_width =  GetSystemMetrics(0)
+screen_height = GetSystemMetrics(1)
+
 while True:
-    win32gui.DrawIcon(hdc, x , y , win32gui.LoadIcon(None, win32con.IDI_WARNING)) # Change IDI_ERROR to something else to change the icon being displayed
-    x = random.randint(0, 2000)
-    if x >= w:
-        y = random.randint(0, 2000)
-        x = 0
-    if y >= h:
-        x = y = random.randint(0, 2000)
-    win32gui.DrawIcon(hdc, x , y , win32gui.LoadIcon(None, win32con.IDI_ERROR)) # Change IDI_ERROR to something else to change the icon being displayed
-    x = random.randint(0, 2000)
-    if x >= w:
-        y = random.randint(0, 2000)
-        x = 0
-    if y >= h:
-        x = y = random.randint(0, 2000)
-    win32gui.DrawIcon(hdc, x , y , win32gui.LoadIcon(None, win32con.IDI_QUESTION)) # Change IDI_ERROR to something else to change the icon being displayed
-    x = random.randint(0, 2000)
-    if x >= w:
-        y = random.randint(0, 2000)
-        x = 0
+    # Draw a warning icon at a random position
+    x = random.randint(0, screen_width - 1)
+    y = random.randint(0, screen_height - 1)
+    win32gui.DrawIcon(hdc, x, y, win32gui.LoadIcon(None, win32con.IDI_WARNING))
+    time.sleep(0.1)  # Short delay
+
+    # Draw an error icon at a random position
+    x = random.randint(0, screen_width - 1)
+    y = random.randint(0, screen_height - 1)
+    win32gui.DrawIcon(hdc, x, y, win32gui.LoadIcon(None, win32con.IDI_ERROR))
+    time.sleep(0.1)  # Short delay
+
+    # Draw a question icon at a random position
+    x = random.randint(0, screen_width - 1)
+    y = random.randint(0, screen_height - 1)
+    win32gui.DrawIcon(hdc, x, y, win32gui.LoadIcon(None, win32con.IDI_QUESTION))
+    time.sleep(0.1)  # Short delay
